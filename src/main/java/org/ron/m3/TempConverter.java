@@ -14,8 +14,24 @@ public class TempConverter {
     }
 
 
-    private double convertF2C(double f) {
+    public double convertF2C(double f) {
         return (f - 32) * 5/9;
+    }
+
+    protected double convert(boolean f2c, double val) {
+
+//        double result = f2c ? convertF2C(val) : convertC2F(val);     // ternary operator
+//        return result;
+
+        return f2c ? convertF2C(val) : convertC2F(val);     // ternary operator
+    }
+
+    double pkgConvert(boolean f2c, double val) {
+        if (f2c) {
+            return convertF2C(val);
+        } else {
+            return convertC2F(val);
+        }
     }
 
     private double convertC2F(double c) {
