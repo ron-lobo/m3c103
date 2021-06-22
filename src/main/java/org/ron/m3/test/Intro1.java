@@ -2,19 +2,19 @@ package org.ron.m3.test;
 
 import org.ron.m3.TempConverter;
 
-public class Test01 extends TempConverter {
+public class Intro1 extends TempConverter {
 
     public static void main(String[] args) {
-        Test01 tc = new Test01();
-//        tc.convertF2C(123);
-//        tc.convert(true, 321);
-//        tc.getVal();
-        tc.testTC();
+        Intro1 intro1 = new Intro1();
+//        intro1.convertF2C(123);
+//        intro1.convert(true, 321);
+//        intro1.getVal();
+        intro1.testTC();
     }
 
     public void testTC() {
-        Test01 tcA = new Test01();
-        Test01 tcB = tcA; // new Test01();
+        Intro1 tcA = new Intro1();
+        Intro1 tcB = tcA; // new Test01();
 
         System.out.println(tcA == tcB);
         System.out.println(tcA.equals(tcB));
