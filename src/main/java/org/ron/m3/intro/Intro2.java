@@ -1,14 +1,15 @@
-package org.ron.m3.test;
+package org.ron.m3.intro;
 
 public class Intro2 {
 
     public static void main(String[] args) {
-        forLoop();
-        whileLoop();
-        doWhileLoop();
+        Intro2 intro2 = new Intro2();
+        intro2.forLoop();
+        intro2.whileLoop();
+        intro2.doWhileLoop();
     }
 
-    private static void doWhileLoop() {
+    private void doWhileLoop() {
         int i = 0;
         do {
             System.out.println("do while loop 1: i=" + ++i);
@@ -30,7 +31,7 @@ public class Intro2 {
 
     }
 
-    private static void whileLoop() {
+    private void whileLoop() {
         int i = 0;
         while (i < 4) {
             System.out.println("while loop 1: i=" + ++i);
@@ -51,7 +52,7 @@ public class Intro2 {
         System.out.println();
     }
 
-    private static void forLoop() {
+    private void forLoop() {
         for (int i = 0; i < 10; i++) System.out.println("for loop 1: i=" + i);
         System.out.println();
 

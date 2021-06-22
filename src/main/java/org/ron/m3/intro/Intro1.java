@@ -1,4 +1,4 @@
-package org.ron.m3.test;
+package org.ron.m3.intro;
 
 import org.ron.m3.TempConverter;
 
