@@ -3,10 +3,10 @@ package org.ron.m3.my1stOOP;
 public class Dog {
 
     private String name;
-    private String breed;
+    private final String breed;
     private int age;
     private char size; // S/M/L
-    private boolean isMale;
+    private final boolean isMale;
 
 //    public Dog() {
 //        System.out.println("Creating new dog");
@@ -22,8 +22,15 @@ public class Dog {
 
     public void walkDog(int minutes) {
         System.out.println("About to take " + name + " for walkies");
+        if (minutes > 10) {
+            runAround();
+        }
         System.out.println("returned from " + minutes + " mins walk with " + getName());
         System.out.println();
+    }
+
+    public void runAround() {
+        System.out.println(name + " runs around");
     }
 
     public String getName() {
@@ -36,10 +43,6 @@ public class Dog {
 
     public String getBreed() {
         return breed;
-    }
-
-    public void setBreed(String breed) {
-        this.breed = breed;
     }
 
     public int getAge() {

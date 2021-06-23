@@ -61,7 +61,7 @@ public class Intro2 {
         System.out.println();
 
         String s = "c103";
-        for (Character c : s.toCharArray()) {
+        for (char c : s.toCharArray()) {
             System.out.println("for loop 3a: c=" + c);
         }
         System.out.println();

@@ -13,6 +13,6 @@ public class PetsApp {
 
         fido.walkDog(30);
         dog1.walkDog(45);
-        dog2.walkDog(20);
+        dog2.walkDog(10);
     }
 }
