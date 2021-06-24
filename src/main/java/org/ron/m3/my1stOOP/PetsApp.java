@@ -4,32 +4,43 @@ public class PetsApp {
 
     public static void main(String[] args) {
 
-        Dog[] dogs = createDogs();
-        dogs[2].setAge(dogs[2].getAge() + 1);
+        Pet[] pets = createPets();
+        for (Pet pet : pets) {
+            System.out.println(pet);
+        }
 
-        walkDogs(dogs);
-
-        dogs[0].wagTail();
-        dogs[2].wagTail();
+        exercisePets(pets);
         System.out.println();
 
-        for (Dog dog : dogs) {
-            System.out.println(dog);
+        playWithPets(pets);
+        System.out.println();
+    }
+
+    private static void playWithPets(Pet[] pets) {
+        for (Pet pet : pets) {
+            pet.playWith();
         }
     }
 
-    private static void walkDogs(Dog[] dogs) {
-        dogs[0].walkDog(30);
-        dogs[1].walkDog(45);
-        dogs[2].walkDog(10);
+    private static void exercisePets(Pet[] pets) {
+        for (Pet pet : pets) {
+            pet.getExercise();
+//            if (pet instanceof Dog) {
+//                Dog dog = (Dog) pet;
+//                dog.walkDog(30);
+//            }
+        }
     }
 
-    private static Dog[] createDogs() {
+    private static Pet[] createPets() {
         Dog dog0 = new Dog("Fido", "Collie", 3, 'L', true);
         Dog dog1 = new Dog("Rovette", "Labrador", 1, 'S', false);
-        Dog dog2 = new Dog("Champ", "German Shepherd", 10, 'L', true);
-//        Dog[] dogs = new Dog[]{dog0, dog1, dog2};
-//        return dogs;
-        return new Dog[]{dog0, dog1, dog2};
+        Dog dog2 = new Dog("Champ", "German Shepherd", 10, 'L', true, true);
+
+        Cat cat0 = new Cat("Tiddles", "Tabby", 3, 'L', true);
+        Cat cat1 = new Cat("Kitty", "Siamese", 1, 'S', false);
+
+        Pet[] pets = new Pet[]{dog0, dog1, dog2, cat0, cat1};
+        return pets;
     }
 }

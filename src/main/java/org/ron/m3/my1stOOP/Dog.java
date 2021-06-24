@@ -1,23 +1,25 @@
 package org.ron.m3.my1stOOP;
 
-public class Dog {
+public class Dog extends Pet {
 
-    private String name;
-    private final String breed;
-    private int age;
-    private char size; // S/M/L
-    private final boolean isMale;
+    private boolean isTrained;
 
     public Dog(String name, String breed, int age, char size, boolean isMale) {
-        this.name = name;
-        this.breed = breed;
-        this.age = age;
-        this.size = size;
-        this.isMale = isMale;
+        super(name, breed, age, size, isMale);
+        this.isTrained = false;
+    }
+
+    public Dog(String name, String breed, int age, char size, boolean isMale, boolean isTrained) {
+        super(name, breed, age, size, isMale);
+        this.isTrained = isTrained;
+    }
+
+    public void getExercise() {
+        walkDog(30);
     }
 
     public void walkDog(int minutes) {
-        System.out.println("About to take " + name + " for walkies");
+        System.out.println("About to take " + getName() + " for walkies");
         if (minutes > 10) {
             runAround();
         }
@@ -26,51 +28,24 @@ public class Dog {
     }
 
     public void runAround() {
-        System.out.println(name + " runs around");
+        System.out.println(getName() + " runs around");
     }
 
-    public void wagTail() {
-        System.out.println(name + " wags tail");
+    public void expressJoy() {
+        System.out.println(getName() + " wags tail");
     }
 
     @Override
-    public String toString() {
-        return "name=" + getName() +
-                ", breed=" + getBreed() +
-                ", age=" + getAge() +
-                ", size=" + getSize() +
-                ", isMale=" + isMale;
+    public void playWith() {
+        System.out.println("playing fetch with " + getName());
+        expressJoy();
     }
 
-    public String getName() {
-        return name;
+    public boolean isTrained() {
+        return isTrained;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getBreed() {
-        return breed;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public char getSize() {
-        return size;
-    }
-
-    public void setSize(char size) {
-        this.size = size;
-    }
-
-    public boolean isMale() {
-        return isMale;
+    public void setTrained(boolean trained) {
+        isTrained = trained;
     }
 }
