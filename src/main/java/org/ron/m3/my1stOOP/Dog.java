@@ -8,10 +8,6 @@ public class Dog {
     private char size; // S/M/L
     private final boolean isMale;
 
-//    public Dog() {
-//        System.out.println("Creating new dog");
-//    }
-
     public Dog(String name, String breed, int age, char size, boolean isMale) {
         this.name = name;
         this.breed = breed;
@@ -31,6 +27,19 @@ public class Dog {
 
     public void runAround() {
         System.out.println(name + " runs around");
+    }
+
+    public void wagTail() {
+        System.out.println(name + " wags tail");
+    }
+
+    @Override
+    public String toString() {
+        return "name=" + getName() +
+                ", breed=" + getBreed() +
+                ", age=" + getAge() +
+                ", size=" + getSize() +
+                ", isMale=" + isMale;
     }
 
     public String getName() {
