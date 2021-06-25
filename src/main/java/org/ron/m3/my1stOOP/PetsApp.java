@@ -5,7 +5,11 @@ import org.ron.m3.my1stOOP.pets.*;
 public class PetsApp {
 
     public static void main(String[] args) {
+        PetsApp petsApp = new PetsApp();
+        petsApp.testPetsClasses();
+    }
 
+    private void testPetsClasses() {
         Pet[] pets = createPets();
         for (Pet pet : pets) {
             System.out.println(pet);
@@ -18,19 +22,19 @@ public class PetsApp {
         System.out.println();
     }
 
-    private static void playWithPets(Pet[] pets) {
+    private void playWithPets(Pet[] pets) {
         for (Pet pet : pets) {
             pet.playWith();
         }
     }
 
-    private static void exercisePets(Pet[] pets) {
+    private void exercisePets(Pet[] pets) {
         for (Pet pet : pets) {
             pet.getExercise();
         }
     }
 
-    private static Pet[] createPets() {
+    private Pet[] createPets() {
         Dog dog0 = new Dog("Fido", "Collie", 3, 'L', true);
         Dog dog1 = new Dog("Rovette", "Labrador", 1, 'S', false);
         Dog dog2 = new Dog("Champ", "German Shepherd", 10, 'L', true, true);
