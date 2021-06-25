@@ -1,4 +1,4 @@
-package org.ron.m3.my1stOOP;
+package org.ron.m3.my1stOOP.pets;
 
 public abstract class Pet {
 
@@ -18,11 +18,14 @@ public abstract class Pet {
 
     public abstract void expressJoy();
 
-    public abstract void playWith();
+    public void playWith() {
+        System.out.println("stroke " + getName());
+        expressJoy();
+    }
 
     public void getExercise() {
-        System.out.println(name + " is too lazy to exercise");
-    };
+        System.out.println(name + " exercises by itself");
+    }
 
     @Override
     public String toString() {

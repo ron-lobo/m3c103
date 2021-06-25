@@ -1,5 +1,7 @@
 package org.ron.m3.my1stOOP;
 
+import org.ron.m3.my1stOOP.pets.*;
+
 public class PetsApp {
 
     public static void main(String[] args) {
@@ -25,10 +27,6 @@ public class PetsApp {
     private static void exercisePets(Pet[] pets) {
         for (Pet pet : pets) {
             pet.getExercise();
-//            if (pet instanceof Dog) {
-//                Dog dog = (Dog) pet;
-//                dog.walkDog(30);
-//            }
         }
     }
 
@@ -40,7 +38,9 @@ public class PetsApp {
         Cat cat0 = new Cat("Tiddles", "Tabby", 3, 'L', true);
         Cat cat1 = new Cat("Kitty", "Siamese", 1, 'S', false);
 
-        Pet[] pets = new Pet[]{dog0, dog1, dog2, cat0, cat1};
-        return pets;
+        Bird bird0 = new Bird("Birdy", "Finch", 2, 'S', false);
+        Bird bird1 = new Bird("Tweety", "Canary", 4, 'S', true);
+
+        return new Pet[]{dog0, dog1, dog2, cat0, cat1, bird0, bird1};
     }
 }

@@ -1,4 +1,4 @@
-package org.ron.m3.my1stOOP;
+package org.ron.m3.my1stOOP.pets;
 
 public class Dog extends Pet {
 
