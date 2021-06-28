@@ -48,4 +48,13 @@ public class Dog extends Pet {
     public void setTrained(boolean trained) {
         isTrained = trained;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (super.equals(obj)) {
+            Dog dog = (Dog) obj;
+            return isTrained == dog.isTrained;
+        }
+        return false;
+    }
 }
