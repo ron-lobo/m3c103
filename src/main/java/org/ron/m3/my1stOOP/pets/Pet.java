@@ -28,6 +28,27 @@ public abstract class Pet {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Pet)) {
+            return false;
+        }
+        Pet p = (Pet) obj;
+
+        if (name.equals(p.name) &&
+                breed.equals(p.breed) &&
+                age == p.age &&
+                size == p.size &&
+                isMale == p.isMale) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
     public String toString() {
         return "name=" + getName() +
                 ", breed=" + getBreed() +

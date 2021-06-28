@@ -1,5 +1,10 @@
 package org.ron.m3.collections;
 
+import org.ron.m3.my1stOOP.pets.Bird;
+import org.ron.m3.my1stOOP.pets.Cat;
+import org.ron.m3.my1stOOP.pets.Dog;
+import org.ron.m3.my1stOOP.pets.Pet;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -34,6 +39,23 @@ public class CollectionsIntro {
         List<String> strList2 = List.of("a", "bc", "def"); // immutable list
         // strList2.add("123");
         // useList(strList2, "immutableList");
+
+
+        Dog max = new Dog("Max", "Whippet", 7, 'S', true);
+        Dog dogette = new Dog("Dogette", "Poodle", 6, 'M', false);
+        Cat felix = new Cat("Felix", "fatcat", 5, 'L', true);
+        Bird polly = new Bird("Polly", "parrot", 9, 'M', false);
+
+        List<Dog> dogs = new ArrayList<>();
+        dogs.add(max);
+        dogs.add(dogette);
+//        dogs.add(felix);
+
+        List<Pet> pets = new ArrayList<>();
+        pets.add(max);
+        pets.add(dogette);
+        pets.add(felix);
+        pets.add(polly);
     }
 
     public void useList(List<String> strList, String info) {
