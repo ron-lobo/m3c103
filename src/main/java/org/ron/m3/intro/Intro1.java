@@ -1,6 +1,6 @@
 package org.ron.m3.intro;
 
-import org.ron.m3.TempConverter;
+import org.ron.m3.basics.TempConverter;
 
 public class Intro1 extends TempConverter {
 

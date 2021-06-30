@@ -1,4 +1,4 @@
-package org.ron.m3.collections;
+package org.ron.m3.intro;
 
 import org.ron.m3.my1stOOP.pets.Bird;
 import org.ron.m3.my1stOOP.pets.Cat;

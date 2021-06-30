@@ -1,4 +1,4 @@
-package org.ron.m3.interfaces;
+package org.ron.m3.intro;
 
 public class InterfaceIntro {
 

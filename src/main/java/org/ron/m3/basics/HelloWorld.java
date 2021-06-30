@@ -1,4 +1,4 @@
-package org.ron.m3;
+package org.ron.m3.basics;
 
 public class HelloWorld {
 
