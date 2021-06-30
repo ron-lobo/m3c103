@@ -5,10 +5,7 @@ import org.ron.m3.my1stOOP.pets.Cat;
 import org.ron.m3.my1stOOP.pets.Dog;
 import org.ron.m3.my1stOOP.pets.Pet;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class CollectionsIntro {
 
@@ -16,16 +13,58 @@ public class CollectionsIntro {
         CollectionsIntro ci = new CollectionsIntro();
         ci.arrays();
         ci.lists();
+        ci.sets();
+    }
+
+    private void sets() {
+        System.out.println("\nSets");
+
+        Set<String> stringSet = new HashSet<>();
+        stringSet.add("abc");
+        stringSet.add("123");
+        stringSet.add("hi there");
+        stringSet.add("xyz");
+
+        System.out.println("number of elements in stringSet: " + stringSet.size());
+        stringSet.add("xyz");
+        stringSet.add("abc");
+        stringSet.add("123");
+        System.out.println("number of elements in stringSet: " + stringSet.size());
+        stringSet.add(null);
+        stringSet.add("456");
+        System.out.println("number of elements in stringSet: " + stringSet.size());
+
+        for (String s : stringSet) {
+            System.out.println("stringSet contains: " + s);
+        }
+
+        List<Integer> intList = createIntList();
+        Set<Integer> intSet = new HashSet<>(intList);
+
+        System.out.println("intList size: " + intList.size());
+        System.out.println("intSet size: " + intSet.size());
+        for (Integer i : intSet) {
+            System.out.println("intSet contains: " + i);
+            // intSet.remove(i);
+        }
+
+        System.out.println("\nstringSet size: " + stringSet.size());
+        for (Iterator<String> iter = stringSet.iterator(); iter.hasNext();) {
+            String element = iter.next();
+            System.out.println("(Iterator) stringSet contains: " + element);
+            if (element == null) {
+                iter.remove();
+            }
+        }
+        System.out.println("stringSet size: " + stringSet.size());
     }
 
     private void lists() {
-//        ArrayList<Integer> intList0 = new ArrayList<>();
-        List<Integer> intList = new ArrayList<>();
-        intList.add(123);
-        intList.add(456);
-        intList.add(456);
-        intList.add(456);
+        System.out.println("\nLists");
 
+        // ArrayList<Integer> intList0 = new ArrayList<>();  // don't declare like this
+
+        List<Integer> intList = createIntList();
         for (Integer i : intList) {
             System.out.println("intList contents: " + i);
         }
@@ -55,7 +94,17 @@ public class CollectionsIntro {
         pets.add(max);
         pets.add(dogette);
         pets.add(felix);
-        pets.add(polly);
+        pets.add(0, polly);
+    }
+
+    private List<Integer> createIntList() {
+        List<Integer> intList = new ArrayList<>();
+        intList.add(123);
+        intList.add(456);
+        intList.add(456);
+        intList.add(456);
+        intList.add(3, null);
+        return intList;
     }
 
     public void useList(List<String> strList, String info) {
