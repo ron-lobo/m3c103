@@ -9,11 +9,70 @@ import java.util.*;
 
 public class CollectionsIntro {
 
+    public static final String EDWARD_CULLEN = "Edward Cullen";
+    public static final String BELLA_SWAN = "Bella Swan";
+    public static final String JACOB_BLACK = "Jacob Black";
+    public static final String ARO_VENTURI = "Aro Venturi";
+
     public static void main(String[] args) {
         CollectionsIntro ci = new CollectionsIntro();
         ci.arrays();
         ci.lists();
         ci.sets();
+        ci.maps();
+    }
+
+    private void maps() {
+        System.out.println("\nMaps");
+        Map<String, Integer> map0 = new HashMap<>();
+
+        Map<String, String> id2phoneMap = new HashMap<>();
+        id2phoneMap.put(EDWARD_CULLEN, "123 456");
+        id2phoneMap.put(BELLA_SWAN, "123 555");
+        id2phoneMap.put(JACOB_BLACK, "123 444");
+        id2phoneMap.put(ARO_VENTURI, "123 333");
+        // id2phoneMap.put(123, Boolean.TRUE);  wrong types - not allowed
+
+        String bellasNumber = id2phoneMap.get("Bella");
+        System.out.println("Bella's phone number (NOT in map): " + bellasNumber);
+        System.out.println("Bella Swan's phone number        : " + id2phoneMap.get(BELLA_SWAN));
+        System.out.println("value of key which isn't in map  : " + id2phoneMap.get(123)); // beware
+
+        id2phoneMap.put(BELLA_SWAN, "123 554");
+        System.out.println("Bella Swan's phone number        : " + id2phoneMap.get(BELLA_SWAN));
+
+        Set<String> bellasPhoneSet = new HashSet<>();
+        bellasPhoneSet.add("123 551");
+        bellasPhoneSet.add("123 552");
+        bellasPhoneSet.add("123 553");
+        bellasPhoneSet.add("123 554");
+
+        Map<String, Set<String>> id2phonesetMap = new HashMap<>();
+        id2phonesetMap.put(EDWARD_CULLEN, Set.of("123 456", "321 456"));
+        id2phonesetMap.put(BELLA_SWAN, bellasPhoneSet);
+
+        Set<String> bellasNumbers = id2phonesetMap.get(BELLA_SWAN);
+        System.out.println("Bella Swan's phone number set    : " + bellasNumbers);
+        bellasNumbers.add("321 556");
+
+        for (String id : id2phoneMap.keySet()) {
+            System.out.println("id=" + id + ", number=" + id2phoneMap.get(id));
+            // id2phoneMap.remove(id);  // causes ConcurrentModificationException
+        }
+        for (String number : id2phoneMap.values()) {
+            System.out.println("number=" + number);
+        }
+        for (Map.Entry<String, String> entry : id2phoneMap.entrySet()) {
+            System.out.println("id=" + entry.getKey() + ", number=" + entry.getValue());
+        }
+
+        System.out.println("id2phoneMap size = " + id2phoneMap.size());
+        for (Iterator<String> iter = id2phoneMap.keySet().iterator(); iter.hasNext();) {
+            String id = iter.next();
+            System.out.println("id=" + id + ", number=" + id2phoneMap.get(id));
+            iter.remove();
+        }
+        System.out.println("id2phoneMap size = " + id2phoneMap.size());
     }
 
     private void sets() {
@@ -95,6 +154,8 @@ public class CollectionsIntro {
         pets.add(dogette);
         pets.add(felix);
         pets.add(0, polly);
+
+        System.out.println("max is in pets: " + pets.contains(max));
     }
 
     private List<Integer> createIntList() {

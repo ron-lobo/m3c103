@@ -29,14 +29,16 @@ public abstract class Pet {
 
     @Override
     public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
         if (obj == null || obj.getClass() != getClass())
             return false;
         Pet p = (Pet) obj;
-        return (name == null ? p.name == null : name.equals(p.name) &&
-                breed == null ? p.breed == null : breed.equals(p.breed) &&
+        return (name == p.name || (name != null && name.equals(p.name))) &&
+                (breed == p.breed || (breed != null && breed.equals(p.breed))) &&
                 age == p.age &&
                 size == p.size &&
-                isMale == p.isMale);
+                isMale == p.isMale;
     }
 
     @Override

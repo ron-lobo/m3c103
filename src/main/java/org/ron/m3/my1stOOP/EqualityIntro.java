@@ -12,8 +12,8 @@ public class EqualityIntro {
 
     public static void main(String[] args) {
         EqualityIntro equalityIntro = new EqualityIntro();
-        equalityIntro.test0();
-        equalityIntro.test1();
+//        equalityIntro.test0();
+//        equalityIntro.test1();
         equalityIntro.test2();
     }
 
@@ -53,6 +53,7 @@ public class EqualityIntro {
         Dog dog0 = new Dog("Fido", "Collie", 3, 'L', true);
         Dog dog1 = new Dog("Fido", "Collie", 3, 'L', true);
         Cat cat1 = new Cat("Fido", "Collie", 3, 'L', true);
+        Cat cat2 = cat1;
 
 //        dog0.setAge(5);
 //        dog1.setName("Champ");
@@ -62,6 +63,7 @@ public class EqualityIntro {
 
         System.out.println("Equality Test: == operator : dogs are " + (dog0 == dog1 ? "the same" : "different"));
 
+        testEquality(cat1, cat2);
         testEquality(dog0, cat1);
         testEquality(dog0, dog1);
         dog1.setTrained(true);
