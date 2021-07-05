@@ -67,12 +67,18 @@ public class CollectionsIntro {
         }
 
         System.out.println("id2phoneMap size = " + id2phoneMap.size());
-        for (Iterator<String> iter = id2phoneMap.keySet().iterator(); iter.hasNext();) {
+        for (Iterator<String> iter = id2phoneMap.keySet().iterator(); iter.hasNext(); ) {
             String id = iter.next();
             System.out.println("id=" + id + ", number=" + id2phoneMap.get(id));
             iter.remove();
         }
         System.out.println("id2phoneMap size = " + id2phoneMap.size());
+
+
+        Map<String, Pet> owner2pet = new HashMap<>();
+        Map<String, List<Pet>> owner2pets = new HashMap<>();
+        Map<Pet, String> pet2Owner = new HashMap<>();
+
     }
 
     private void sets() {

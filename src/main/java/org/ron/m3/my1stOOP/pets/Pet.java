@@ -42,12 +42,28 @@ public abstract class Pet {
     }
 
     @Override
+    public int hashCode() {
+        // return 0;
+        // return name.hashCode() + breed.hashCode() + age + size + ((Boolean) isMale).hashCode();
+
+        final int PRIME = 97;
+        int result = name.hashCode();
+        result = result * PRIME + breed.hashCode();
+        result = result * PRIME + ((Integer) age).hashCode();
+        result = result * PRIME + ((Character) size).hashCode();
+        result = result * PRIME + ((Boolean) isMale).hashCode();
+        return result;
+    }
+
+    @Override
     public String toString() {
-        return "name=" + getName() +
+        return "Pet {" +
+                "name=" + getName() +
                 ", breed=" + getBreed() +
                 ", age=" + getAge() +
                 ", size=" + getSize() +
-                ", isMale=" + isMale;
+                ", isMale=" + isMale +
+                "}";
     }
 
     public String getName() {
