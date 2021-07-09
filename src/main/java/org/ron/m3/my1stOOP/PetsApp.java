@@ -1,8 +1,13 @@
 package org.ron.m3.my1stOOP;
 
-import org.ron.m3.my1stOOP.pets.*;
+import org.ron.m3.my1stOOP.pets.Bird;
+import org.ron.m3.my1stOOP.pets.Cat;
+import org.ron.m3.my1stOOP.pets.Dog;
+import org.ron.m3.my1stOOP.pets.Pet;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class PetsApp {
@@ -27,6 +32,39 @@ public class PetsApp {
 
         playWithPets(pets);
         System.out.println();
+
+        // sort by "natural order"
+        Collections.sort(pets);
+        System.out.println("sorted by: age, size, isMale, etc");
+        for (Pet pet : pets) {
+            System.out.println(pet);
+        }
+
+//        Collections.sort(pets, new BreedComparator());
+        pets.sort(new BreedComparator());
+        System.out.println("sorted by: breed");
+        for (Pet pet : pets) {
+            System.out.println(pet);
+        }
+
+        Collections.sort(pets, new NameComparator());
+//        Collections.reverse(pets);
+        System.out.println("sorted by: name");
+        for (Pet pet : pets) {
+            System.out.println(pet);
+        }
+    }
+
+    private class BreedComparator implements Comparator<Pet> {
+        public int compare(Pet p1, Pet p2) {
+            return p1.getBreed().compareTo(p2.getBreed());
+        }
+    }
+
+    private class NameComparator implements Comparator<Pet> {
+        public int compare(Pet p1, Pet p2) {
+            return -(p1.getName().compareTo(p2.getName()));
+        }
     }
 
     private void playWithPets(List<Pet> pets) {

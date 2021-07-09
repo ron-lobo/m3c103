@@ -1,6 +1,6 @@
 package org.ron.m3.my1stOOP.pets;
 
-public abstract class Pet {
+public abstract class Pet implements Comparable<Pet> {
 
     private String name;
     private final String breed;
@@ -27,6 +27,24 @@ public abstract class Pet {
         System.out.println(name + " exercises by itself");
     }
 
+    // sort by age, size, gender, breed, name
+    public int compareTo(Pet pet) {
+        int result = Integer.compare(age, pet.age);
+        if (result == 0) {
+            result = Character.compare(size, pet.size);
+            if (result == 0) {
+                result = Boolean.compare(isMale, pet.isMale);
+                if (result == 0) {
+                    result = breed.compareTo(pet.breed);
+                    if (result == 0) {
+                        result = name.compareTo(pet.name);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -44,7 +62,7 @@ public abstract class Pet {
     @Override
     public int hashCode() {
         // return 0;
-        // return name.hashCode() + breed.hashCode() + age + size + ((Boolean) isMale).hashCode();
+        // return name.hashCode() + breed.hashCode() + age + size + Boolean.valueOf(isMale).hashCode();
 
         final int PRIME = 97;
         int result = name.hashCode();
