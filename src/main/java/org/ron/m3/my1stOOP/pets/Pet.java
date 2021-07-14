@@ -1,5 +1,7 @@
 package org.ron.m3.my1stOOP.pets;
 
+import java.util.Objects;
+
 public abstract class Pet implements Comparable<Pet> {
 
     private String name;
@@ -52,8 +54,8 @@ public abstract class Pet implements Comparable<Pet> {
         if (obj == null || obj.getClass() != getClass())
             return false;
         Pet p = (Pet) obj;
-        return (name == p.name || (name != null && name.equals(p.name))) &&
-                (breed == p.breed || (breed != null && breed.equals(p.breed))) &&
+        return Objects.equals(name, p.name) &&
+                Objects.equals(breed, p.breed) &&
                 age == p.age &&
                 size == p.size &&
                 isMale == p.isMale;
@@ -61,16 +63,7 @@ public abstract class Pet implements Comparable<Pet> {
 
     @Override
     public int hashCode() {
-        // return 0;
-        // return name.hashCode() + breed.hashCode() + age + size + Boolean.valueOf(isMale).hashCode();
-
-        final int PRIME = 97;
-        int result = name.hashCode();
-        result = result * PRIME + breed.hashCode();
-        result = result * PRIME + ((Integer) age).hashCode();
-        result = result * PRIME + ((Character) size).hashCode();
-        result = result * PRIME + ((Boolean) isMale).hashCode();
-        return result;
+        return Objects.hash(name, breed, age, size, isMale);
     }
 
     @Override
