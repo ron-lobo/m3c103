@@ -9,7 +9,8 @@ public class HWService implements GreetingService {
     }
 
     @Override
-    public void makeGreeting(String salutation) {
+    public int makeGreeting(String salutation) {
         System.out.printf("%s %s%n", salutation, audienceProvider.getAudience());
+        return salutation.length();
     }
 }
