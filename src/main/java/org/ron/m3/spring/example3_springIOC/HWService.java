@@ -1,5 +1,8 @@
 package org.ron.m3.spring.example3_springIOC;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class HWService implements GreetingService {
 
     private final AudienceProvider audienceProvider;
