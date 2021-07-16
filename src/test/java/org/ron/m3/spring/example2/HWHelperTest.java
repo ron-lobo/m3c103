@@ -1,4 +1,4 @@
-package org.ron.m3.spring.example2.example1;
+package org.ron.m3.spring.example2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
