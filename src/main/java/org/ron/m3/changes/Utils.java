@@ -1,13 +1,11 @@
 package org.ron.m3.changes;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -17,6 +15,7 @@ public class Utils {
 
     private static final Logger logger = Logger.getLogger(Utils.class.getName());
     private static final char SPACE = ' ';
+    private static boolean useStreams = true;
 
     private Utils() {
     }
@@ -25,8 +24,20 @@ public class Utils {
         final int items = 10;
         final int minValue = 200;
         final int maxValue = 300;
+        setUseStreams(false);
         print("getRandomList() [loop]   ", getRandomList(items, minValue, maxValue));
         print("getRandomMap()  [loop]   ", getRandomMap(items, maxValue));
+        setUseStreams(true);
+        print("getRandomList() [stream] ", getRandomList(items, minValue, maxValue));
+        print("getRandomMap()  [stream] ", getRandomMap(items, maxValue));
+    }
+
+    public static boolean getUseStreams() {
+        return useStreams;
+    }
+
+    public static void setUseStreams(boolean useStreams) {
+        Utils.useStreams = useStreams;
     }
 
     // ----------------------------------------
@@ -35,22 +46,31 @@ public class Utils {
     public static List<Integer> getRandomList(int maxItems, int minValue, int maxValue) {
         final int numItems = getRandomInt(0, maxItems);
         logger.fine("creating a random list with " + numItems + " items");
-        List<Integer> myList = new ArrayList<>();
-        for (int i = 0; i < numItems; i++) {
-            myList.add(getRandomInt(minValue, maxValue));
+        if (useStreams) {
+            return IntStream.iterate(0, i -> i < numItems, i -> i + 1).map(i -> getRandomInt(minValue, maxValue)).boxed().collect(Collectors.toList());
+        } else {
+            List<Integer> myList = new ArrayList<>();
+            for (int i = 0; i < numItems; i++) {
+                myList.add(getRandomInt(minValue, maxValue));
+            }
+            return myList;
         }
-        return myList;
     }
 
     // create and populate a map with some random values
     public static Map<Integer, Integer> getRandomMap(int maxItems, int maxValue) {
         final int numItems = getRandomInt(0, maxItems);
         logger.fine("creating a random map with " + numItems + " items");
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < numItems; i++) {
-            map.put(getRandomInt(0, maxValue), getRandomInt(0, maxValue));
+        if (useStreams) {
+            return IntStream.iterate(0, i -> i < numItems, i -> i + 1).map(i -> getRandomInt(0, maxValue))
+                    .boxed().collect(Collectors.toMap(k -> k, v -> getRandomInt(0, maxValue), Math::max));
+        } else {
+            Map<Integer, Integer> map = new HashMap<>();
+            for (int i = 0; i < numItems; i++) {
+                map.put(getRandomInt(0, maxValue), getRandomInt(0, maxValue));
+            }
+            return map;
         }
-        return map;
     }
 
     public static int getRandomInt(int min, int max) {
@@ -61,7 +81,7 @@ public class Utils {
 
     // ----------------------------------------
     // Printing Section
-    // TODO: replace System.out.println() and System.err.println() with logging
+    // TODO: optionally enable logging instead of printing to stdout and stderr
 
     public static String print(Object o) {
         return print(true, o);
@@ -88,16 +108,22 @@ public class Utils {
     }
 
     public static String printObjects(boolean isOk, char delimiter, Object... objects) {
-        StringBuilder sb = new StringBuilder();
-        for (Object o : objects) {
-            if (o != null) {
-                if (sb.length() > 0) {
-                    sb.append(delimiter);
+        if (useStreams) {
+//        return print(isOk, String.join(delimiter, objects);
+            return print(isOk, Arrays.stream(objects).filter(Objects::nonNull).map(Object::toString)
+                    .collect(Collectors.joining(String.valueOf(delimiter))));
+        } else {
+            StringBuilder sb = new StringBuilder();
+            for (Object o : objects) {
+                if (o != null) {
+                    if (sb.length() > 0) {
+                        sb.append(delimiter);
+                    }
+                    sb.append(o.toString());
                 }
-                sb.append(o.toString());
             }
+            return print(isOk, sb);
         }
-        return print(isOk, sb);
     }
 
     public static void newMethod(String method) {
